@@ -1,0 +1,48 @@
+
+/*
+    1. Need to utilize all cpus, so create those many threads.
+    2. Can't keep 10 GB data in memory.
+    3. Divide the file in chunks of 1GB, take care of words at boundary.
+    4. check if mmap gives any further improvement
+*/
+
+
+Single thread reading line by line:
+ * Will take lot of time to read and parse each line.
+
+Create multiple threads depending on number of CPUs.
+ * Update of map should be in critical section.
+
+
+
+ Challenges:-
+ 1. Memory utilization keeps growing.
+
+ 2. Challenges in using mmap: 
+    Memory mapping the whole file to process address space will not work for 10GB file.
+    Chunk of file can be mapped then processed.
+    Difficult to get the line number when each thread is processing any line. 
+
+Output for one of the run:
+Number of CPUs available 12
+Num of lines: 317948827
+Time taken by function: 3007.98 seconds
+
+wolf 174952230
+fire 174897589
+cheese 174881456
+ten 174864006
+three 174853698
+cat 174822399
+pig 174889465
+mouse 174876150
+a 174904230
+house 174871048
+
+Verify using linux utility:
+tr '[:space:]' '[\n*]' < inputfile | grep -i -c house
+174871048
+tr '[:space:]' '[\n*]' < inputfile | grep -i -c mouse
+174876150
+tr '[:space:]' '[\n*]' < inputfile | grep -i -c wolf
+174952230

@@ -1,0 +1,16 @@
+{
+    "files.associations": {
+        "ostream": "cpp",
+        "chrono": "cpp",
+        "iostream": "cpp",
+        "iosfwd": "cpp",
+        "istream": "cpp",
+        "stack": "cpp",
+        "__mutex_base": "cpp",
+        "filesystem": "cpp",
+        "stdexcept": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "unordered_map": "cpp"
+    }
+}
